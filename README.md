@@ -6,7 +6,7 @@ A Java library for interacting with IBM Security Identity Manager (ISIM) 6.0.0.2
 
 - Seamless authentication with ISIM REST endpoints
 - Session management with LtpaToken2 support
-- CSRF token handling
+- CSRF token handling for secure API access
 - Modern Java HTTP client implementation
 - Compatible with ISIM 6.0.0.26
 
@@ -69,6 +69,26 @@ The library supports the following configuration options:
 - URL encoding for form data
 - Session management
 
+## 🔑 CSRF Token Usage
+
+The library's primary function is to obtain a CSRF token, which is **required for all subsequent ISIM REST API calls**. This token ensures secure communication with the ISIM server.
+
+### Using the CSRF Token
+
+1. Obtain the token through authentication
+2. Include the token in the header of all subsequent REST API calls
+3. Token is required for operations such as:
+   - User management
+   - Role management
+   - Access requests
+   - Workflow operations
+   - And more...
+
+Example header usage:
+```http
+X-CSRF-Token: YOUR_CSRF_TOKEN
+```
+
 ## 📝 Example Usage
 
 ```java
@@ -93,6 +113,32 @@ public class AuthController {
     }
 }
 ```
+
+## 🚧 Upcoming Features
+
+The following REST API methods will be implemented in future releases:
+
+- User Management
+  - Create/Read/Update/Delete users
+  - Search users
+  - Manage user attributes
+
+- Role Management
+  - Role assignments
+  - Role hierarchy management
+  - Access policy management
+
+- Service Management
+  - Service catalog operations
+  - Service provisioning
+  - Service access management
+
+- Workflow Operations
+  - Workflow initiation
+  - Task management
+  - Approval processes
+
+Stay tuned for updates! Follow our release schedule for new features.
 
 ## 🤝 Contributing
 
